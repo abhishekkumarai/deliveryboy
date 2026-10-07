@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
@@ -48,7 +49,7 @@ GoRouter goRouter(GoRouterRef ref) {
     debugLogDiagnostics: true,
     restorationScopeId: 'router',
     navigatorKey: _rootNavigatorKey,
-    initialLocation: const SplashRoute().location,
+    initialLocation: kIsWeb ? const SignInRoute().location : const SplashRoute().location,
     routes: $appRoutes,
     redirect: (BuildContext context, GoRouterState state) {
       final authState = ref.read(authStateProvider);

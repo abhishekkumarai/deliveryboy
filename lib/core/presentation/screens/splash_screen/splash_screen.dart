@@ -22,18 +22,28 @@ class SplashScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isWarmedUp = !ref.isLoading(splashServicesWarmupProvider);
+    ref.listen<AsyncValue<String>>(
+      splashTargetProvider,
+      (prevState, newState) {
+        if (!isWarmedUp) return;
+        late String nextRoute;
+        newState.whenOrNull(
+          data: (next) => nextRoute = next,
+          error: (e, st) => nextRoute = const NoInternetRoute().location,
+        );
+        context.go(nextRoute);
+      },
+    );
+
     if (isWarmedUp) {
-      ref.listen<AsyncValue<String>>(
-        splashTargetProvider,
-        (prevState, newState) {
-          late String nextRoute;
-          newState.whenOrNull(
-            data: (next) => nextRoute = next,
-            error: (e, st) => nextRoute = const NoInternetRoute().location,
-          );
-          context.go(nextRoute);
-        },
-      );
+      final targetAsync = ref.watch(splashTargetProvider);
+      targetAsync.whenData((nextRoute) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (context.mounted) {
+            context.go(nextRoute);
+          }
+        });
+      });
     }
 
     final fadeController = useFadeInController();

@@ -12,7 +12,7 @@ dependencies:
   cupertino_icons: ^1.0.5
   flutter_localizations:
     sdk: flutter
-  intl: ^0.19.0
+  intl: '>=0.19.0 <1.0.0'
   logging: ^1.2.0
 
   # StateManagement & DI
@@ -42,11 +42,11 @@ dependencies:
   dio: ^5.1.2
 
   # Firebase
-  firebase_core: ^2.24.2
-  cloud_firestore: ^4.14.0
-  firebase_auth: ^4.16.0
-  firebase_storage: ^11.6.0
-  firebase_messaging: ^14.7.10
+  firebase_core: 3.8.1
+  cloud_firestore: 5.5.1
+  firebase_auth: 5.3.3
+  firebase_storage: 12.3.6
+  firebase_messaging: 15.1.5
 
   # LocalStorage
   shared_preferences: ^2.1.1
@@ -59,23 +59,32 @@ dependencies:
   lottie: ^2.3.2
 
   # Utils
-  mocktail: ^0.3.0
+  mocktail: ^1.0.4
   device_info_plus: ^9.0.3
   fast_immutable_collections: ^9.1.5
   flutter_fadein: ^2.0.0
   uuid: ^4.4.2
   url_launcher: ^6.1.11
-  flutter_local_notifications: ^16.3.0
+  flutter_local_notifications: 17.0.0
   timeago: ^3.4.0
 
   # Widgets
   flutter_platform_widgets: ^6.0.2
   flutter_adaptive_scaffold: ^0.1.6
-  fluttertoast: ^8.2.2
+  fluttertoast: ^8.2.10
   qr_flutter: ^4.1.0
   material_floating_search_bar:
     git:
       url: https://github.com/Railway-Engineering-Solutions/material_floating_search_bar.git
+  flutter_plugin_android_lifecycle: 2.0.24
+  geolocator_android: 4.5.5
+  google_maps_flutter_android: 2.14.0
+  image_picker_android: 0.8.12
+  path_provider_android: 2.2.1
+  shared_preferences_android: 2.4.0
+  url_launcher_android: 6.3.14
+  flutter_map: ^8.1.1
+  latlong2: ^0.9.1
 
 dev_dependencies:
   flutter_test:

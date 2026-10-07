@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+
 import '../../../auth/presentation/providers/check_auth_provider.dart';
 import '../../core_features/locale/presentation/providers/app_locale_provider.dart';
 import '../../core_features/theme/presentation/providers/app_theme_provider.dart';
@@ -18,12 +20,12 @@ Future<void> splashServicesWarmup(SplashServicesWarmupRef ref) async {
   final s1 = ref.watch(appThemeControllerProvider.future).suppressError();
   final s2 = ref.watch(appLocaleControllerProvider.future).suppressError();
   final s3 = Future<void>(() async {
-    await ref.watch(setupFlutterNotificationsProvider.future);
-    await ref.watch(requestNotificationPermissionsProvider.future);
+    if (!kIsWeb) {
+      await ref.watch(setupFlutterNotificationsProvider.future).suppressError();
+      await ref.watch(requestNotificationPermissionsProvider.future).suppressError();
+    }
   });
-  final s4 = ref.watch(checkAuthProvider.future).suppressError(
-        shouldSuppressError: (e) => e is AppException && e.type == ServerExceptionType.unauthorized,
-      );
+  final s4 = ref.watch(checkAuthProvider.future).suppressError();
   await [min, s1, s2, s3, s4].wait.throwAllErrors();
 }
 

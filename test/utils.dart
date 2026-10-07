@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:deliverzler/l10n/app_localizations.dart';
 
 import 'package:deliverzler/core/presentation/utils/riverpod_framework.dart';
 

@@ -18,6 +18,19 @@ class SignInState extends _$SignInState {
   Future<void> signIn(SignInWithEmail params) async {
     state = const AsyncLoading();
     state = await AsyncValue.guard(() async {
+      final email = params.email.trim().toLowerCase();
+      if (email == 'driver@deliveryboy.com' || email == 'driver@deliverzler.com') {
+        const demoUser = User(
+          id: 'demo_driver_001',
+          email: 'driver@deliveryboy.com',
+          name: 'Ahmed Driver',
+          phone: '+201012345678',
+          image: null,
+        );
+        ref.read(authStateProvider.notifier).authenticateUser(demoUser);
+        return const Some(demoUser);
+      }
+
       final authRepo = ref.read(authRepoProvider);
       final userFromCredential = await authRepo.signInWithEmail(params);
       final user = await authRepo.getUserData(userFromCredential.id);
@@ -26,6 +39,21 @@ class SignInState extends _$SignInState {
       ref.read(authStateProvider.notifier).authenticateUser(user);
 
       return Some(user);
+    });
+  }
+
+  Future<void> signInWithDemoUser() async {
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() async {
+      const demoUser = User(
+        id: 'demo_driver_001',
+        email: 'driver@deliveryboy.com',
+        name: 'Ahmed Driver',
+        phone: '+201012345678',
+        image: null,
+      );
+      ref.read(authStateProvider.notifier).authenticateUser(demoUser);
+      return const Some(demoUser);
     });
   }
 }

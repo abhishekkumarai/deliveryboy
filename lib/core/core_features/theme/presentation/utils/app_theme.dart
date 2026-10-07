@@ -166,12 +166,12 @@ class AppTheme {
     disabledColor: _appColors.toggleButtonDisabledColor,
   );
 
-  late final CardTheme _cardTheme = CardTheme(
+  late final CardThemeData _cardTheme = CardThemeData(
     color: _appColors.cardBGColor,
     shadowColor: _appColors.cardShadowColor,
   );
 
-  late final DialogTheme _dialogTheme = DialogTheme(
+  late final DialogThemeData _dialogTheme = DialogThemeData(
     backgroundColor: _appColors.scaffoldBGColor,
     titleTextStyle: TextStyles.dialogTitle(_appColors.customColors.font18Color!),
     contentTextStyle: TextStyles.dialogContent(_appColors.customColors.font16Color!),

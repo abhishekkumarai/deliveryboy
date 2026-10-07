@@ -23,7 +23,7 @@ final currentMapControllerProvider = AutoDisposeNotifierProvider<
 );
 
 typedef _$CurrentMapController = AutoDisposeNotifier<GoogleMapController?>;
-String _$mapControllerHash() => r'0172c537173e0e6f3f00f68c7981c99a984cec27';
+String _$mapControllerHash() => r'51e43b1a5aa939124bb96453f79d274795c233dd';
 
 /// See also [MapController].
 @ProviderFor(MapController)
@@ -39,4 +39,5 @@ final mapControllerProvider =
 );
 
 typedef _$MapController = AutoDisposeNotifier<GoogleMapController?>;
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

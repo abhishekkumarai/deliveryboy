@@ -6,7 +6,7 @@ part of 'device_info_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$androidDeviceInfoHash() => r'ba85ac2c175503b984868b5857c0f20b6d8e87cc';
+String _$androidDeviceInfoHash() => r'e75f737f9ee4f8bae554c39eb5aafc754a9bdc9e';
 
 /// See also [androidDeviceInfo].
 @ProviderFor(androidDeviceInfo)
@@ -22,4 +22,5 @@ final androidDeviceInfoProvider =
 );
 
 typedef AndroidDeviceInfoRef = FutureProviderRef<Option<AndroidDeviceInfo>>;
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -14,8 +14,8 @@ class LoginFormComponent extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final loginFormKey = useMemoized(GlobalKey<FormState>.new);
-    final emailController = useTextEditingController(text: '');
-    final passwordController = useTextEditingController(text: '');
+    final emailController = useTextEditingController(text: 'driver@deliveryboy.com');
+    final passwordController = useTextEditingController(text: '123456');
 
     void signIn() {
       if (loginFormKey.currentState!.validate()) {
@@ -79,6 +79,15 @@ class LoginFormComponent extends HookConsumerWidget {
               tr(context).signIn.toUpperCase(),
               style: TextStyles.coloredElevatedButton(context),
             ),
+          ),
+          const SizedBox(
+            height: Sizes.marginV12,
+          ),
+          TextButton(
+            onPressed: () {
+              ref.read(signInStateProvider.notifier).signInWithDemoUser();
+            },
+            child: const Text('Quick Demo Login (Driver)'),
           ),
         ],
       ),

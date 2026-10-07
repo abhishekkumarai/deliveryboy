@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'l10n/app_localizations.dart';
 
 import 'core/core_features/locale/presentation/providers/current_app_locale_provider.dart';
 import 'core/core_features/theme/presentation/providers/current_app_theme_provider.dart';
@@ -35,7 +35,7 @@ class MyApp extends HookConsumerWidget {
           ),
         );
       },
-      title: 'Deliverzler',
+      title: 'DeliveryBoy',
       debugShowCheckedModeBanner: false,
       color: Theme.of(context).colorScheme.primary,
       theme: themeMode.getThemeData(locale.fontFamily, supportsEdgeToEdge: supportsEdgeToEdge),

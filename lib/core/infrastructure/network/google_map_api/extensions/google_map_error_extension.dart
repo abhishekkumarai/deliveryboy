@@ -69,7 +69,8 @@ extension _DioErrorExtension on DioError {
         },
       DioErrorType.connectionTimeout ||
       DioErrorType.sendTimeout ||
-      DioErrorType.receiveTimeout =>
+      DioErrorType.receiveTimeout ||
+      DioErrorType.transformTimeout =>
         ServerException(
           type: ServerExceptionType.timeOut,
           message: message,

@@ -15,7 +15,7 @@ part 'notification_service.g.dart';
 
 const AndroidNotificationChannel _channel = AndroidNotificationChannel(
   'high_importance_channel',
-  'Deliverzler High Importance Notifications',
+  'DeliveryBoy High Importance Notifications',
   description: 'This channel is used for important notifications.',
   importance: Importance.max,
 );

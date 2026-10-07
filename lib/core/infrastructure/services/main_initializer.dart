@@ -23,9 +23,11 @@ Future<ProviderContainer> _mainInitializer() async {
 
     // When the native splash screen is fullscreen, iOS will not automatically show the notification
     // bar when the app loads. To show it, setEnabledSystemUIMode has to be explicitly set:
-    await SystemChrome.setEnabledSystemUIMode(
-      SystemUiMode.edgeToEdge, // https://github.com/flutter/flutter/issues/105714
-    );
+    if (!kIsWeb) {
+      await SystemChrome.setEnabledSystemUIMode(
+        SystemUiMode.edgeToEdge, // https://github.com/flutter/flutter/issues/105714
+      );
+    }
 
     // Closes splash screen, and show the app layout.
     widgetsBinding.allowFirstFrame();
@@ -46,8 +48,10 @@ void _setupLogger() {
 
 Future<void> _initFirebase() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // Set the background messaging handler early on, as a named top-level function
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  if (!kIsWeb) {
+    // Set the background messaging handler early on, as a named top-level function
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  }
 }
 
 Future<void> _precacheAssets(BuildContext context) async {

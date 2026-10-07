@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:geolocator/geolocator.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -13,6 +15,37 @@ part 'location_stream_provider.g.dart';
 Stream<Position> locationStream(
   LocationStreamRef ref,
 ) async* {
+  if (kIsWeb) {
+    yield Position(
+      longitude: 31.2357,
+      latitude: 30.0444,
+      timestamp: DateTime.now(),
+      accuracy: 10,
+      altitude: 0,
+      heading: 0,
+      speed: 0,
+      speedAccuracy: 0,
+      altitudeAccuracy: 0,
+      headingAccuracy: 0,
+    );
+    yield* Stream.periodic(
+      const Duration(seconds: AppLocationSettings.locationChangeInterval),
+      (_) => Position(
+        longitude: 31.2357,
+        latitude: 30.0444,
+        timestamp: DateTime.now(),
+        accuracy: 10,
+        altitude: 0,
+        heading: 0,
+        speed: 0,
+        speedAccuracy: 0,
+        altitudeAccuracy: 0,
+        headingAccuracy: 0,
+      ),
+    );
+    return;
+  }
+
   final locationService = ref.watch(locationServiceProvider);
 
   await ref.watch(enableLocationProvider(locationService).future);
@@ -33,6 +66,7 @@ Future<void> enableLocation(
   EnableLocationRef ref,
   LocationService locationService,
 ) async {
+  if (kIsWeb) return;
   final enabled = await locationService.enableLocationService();
   if (!enabled) {
     Error.throwWithStackTrace(
@@ -47,6 +81,7 @@ Future<void> requestLocationPermission(
   RequestLocationPermissionRef ref,
   LocationService locationService,
 ) async {
+  if (kIsWeb) return;
   final whileInUseGranted = await locationService.requestWhileInUsePermission();
   if (!whileInUseGranted) {
     Error.throwWithStackTrace(
@@ -55,7 +90,7 @@ Future<void> requestLocationPermission(
     );
   }
 
-  if (Platform.isAndroid) {
+  if (!kIsWeb && Platform.isAndroid) {
     final alwaysGranted = await locationService.requestAlwaysPermission();
     if (!alwaysGranted) {
       Error.throwWithStackTrace(

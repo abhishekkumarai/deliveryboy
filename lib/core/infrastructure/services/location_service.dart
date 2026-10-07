@@ -1,7 +1,6 @@
-// ignore_for_file: depend_on_referenced_packages, implementation_imports, unnecessary_import
-
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geolocator_android/src/types/foreground_settings.dart';
 import 'package:location/location.dart' as loc;
@@ -41,6 +40,7 @@ class LocationService {
     if (serviceEnabled) {
       return true;
     } else {
+      if (kIsWeb) return true;
       return loc.Location().requestService();
     }
   }
@@ -50,11 +50,13 @@ class LocationService {
       return true;
     } else {
       final permissionGranted = await Geolocator.requestPermission();
-      return permissionGranted == LocationPermission.whileInUse;
+      return permissionGranted == LocationPermission.whileInUse ||
+          permissionGranted == LocationPermission.always;
     }
   }
 
   Future<bool> requestAlwaysPermission() async {
+    if (kIsWeb) return true;
     if (await isAlwaysPermissionGranted()) {
       return true;
     } else {
@@ -68,20 +70,20 @@ class LocationService {
     int? interval,
     int? distanceFilter,
   }) {
-    if (Platform.isAndroid) {
+    if (!kIsWeb && Platform.isAndroid) {
       return AndroidSettings(
         accuracy: LocationAccuracy.high,
         distanceFilter: distanceFilter ?? AppLocationSettings.locationChangeDistance,
         intervalDuration: Duration(seconds: interval ?? AppLocationSettings.locationChangeInterval),
         //Set foreground notification config to keep app alive in background
         foregroundNotificationConfig: const ForegroundNotificationConfig(
-          notificationTitle: 'Deliverzler Delivery Service',
-          notificationText: 'Deliverzler will receive your location in background.',
+          notificationTitle: 'DeliveryBoy Delivery Service',
+          notificationText: 'DeliveryBoy will receive your location in background.',
           notificationIcon: AndroidResource(name: 'notification_icon'),
           enableWakeLock: true,
         ),
       );
-    } else if (Platform.isIOS || Platform.isMacOS) {
+    } else if (!kIsWeb && (Platform.isIOS || Platform.isMacOS)) {
       return AppleSettings(
         accuracy: LocationAccuracy.high,
         distanceFilter: distanceFilter ?? AppLocationSettings.locationChangeDistance,

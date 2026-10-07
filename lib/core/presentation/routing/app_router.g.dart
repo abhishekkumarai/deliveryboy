@@ -220,7 +220,7 @@ extension $LanguageRouteExtension on LanguageRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$goRouterHash() => r'cbc33c7f768920a91906a6c993a1fe68c700f5a0';
+String _$goRouterHash() => r'0cd390bcc2f467ace5de62dc103b2c3dc80fdd3d';
 
 /// See also [goRouter].
 @ProviderFor(goRouter)
@@ -234,4 +234,5 @@ final goRouterProvider = AutoDisposeProvider<GoRouter>.internal(
 );
 
 typedef GoRouterRef = AutoDisposeProviderRef<GoRouter>;
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -15,7 +15,7 @@ abstract class Toasts {
   }) {
     CustomToast.showToast(
       context,
-      positionedToastBuilder: (context, child) {
+      positionedToastBuilder: (context, child, [gravity]) {
         return Positioned(
           bottom: 0,
           right: 0,

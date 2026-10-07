@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+
 /// Represents the status of the data connection.
 /// Returned by [DataConnectionChecker.connectionStatus]
 enum DataConnectionStatus {
@@ -151,6 +153,7 @@ class DataConnectionChecker {
   /// we assume an internet connection is available and return `true`.
   /// `false` otherwise.
   Future<bool> get hasConnection async {
+    if (kIsWeb) return true;
     final result = Completer<bool>();
     var length = addresses.length;
 
