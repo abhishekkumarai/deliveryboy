@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import '../../../core/presentation/utils/fp_framework.dart';
 import '../../../core/presentation/utils/riverpod_framework.dart';
 import '../../../features/profile/domain/profile_details.dart';
@@ -8,7 +9,20 @@ part 'auth_state_provider.g.dart';
 @Riverpod(keepAlive: true)
 class AuthState extends _$AuthState {
   @override
-  Option<User> build() => const None();
+  Option<User> build() {
+    if (kIsWeb) {
+      return const Some(
+        User(
+          id: 'DP-402',
+          email: 'driver@deliveryboy.com',
+          name: 'Alex Smith',
+          phone: '+1555019283',
+          image: null,
+        ),
+      );
+    }
+    return const None();
+  }
 
   void authenticateUser(User user) {
     state = Some(user);

@@ -10,33 +10,17 @@ import '../../providers/location_stream_provider.dart';
 import '../../providers/update_delivery_geo_point_provider.dart';
 import '../../utils/location_error.dart';
 
+import '../../../../delivery_agent/presentation/screens/active_delivery_task_screen.dart';
+
 class HomeScreenCompact extends HookConsumerWidget {
   const HomeScreenCompact({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final locationAsync = ref.watch(
-      //Using select to avoid rebuilding when location change
-      locationStreamProvider.select((value) => value.whenData((value) => true)),
-    );
-
     ref.listen(updateDeliveryGeoPointStateProvider, (previous, next) {});
 
-    return NestedScreenScaffold(
-      body: locationAsync.when(
-        skipLoadingOnReload: true,
-        skipLoadingOnRefresh: !locationAsync.hasError,
-        loading: () => TitledLoadingIndicator(message: tr(context).determine_location),
-        error: (error, st) => RetryAgainComponent(
-          description: error is LocationError
-              ? error.getErrorText(context)
-              : error.toString(),
-          onPressed: () {
-            ref.invalidate(locationStreamProvider);
-          },
-        ),
-        data: (_) => const UpcomingOrdersComponent(),
-      ),
+    return const NestedScreenScaffold(
+      body: ActiveDeliveryTaskScreen(),
     );
   }
 }

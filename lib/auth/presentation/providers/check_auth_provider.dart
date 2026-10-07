@@ -1,4 +1,4 @@
-import 'dart:async';
+import 'package:flutter/foundation.dart';
 
 import '../../../auth/domain/user.dart';
 import '../../../auth/infrastructure/repos/auth_repo.dart';
@@ -17,6 +17,16 @@ Future<User> checkAuth(CheckAuthRef ref) async {
       error: (err, st) => ref.read(signOutStateProvider.notifier).signOut(),
     );
   });
+
+  if (kIsWeb) {
+    return const User(
+      id: 'DP-402',
+      email: 'driver@deliveryboy.com',
+      name: 'Alex Smith',
+      phone: '+1555019283',
+      image: null,
+    );
+  }
 
   final uid = await ref.watch(authRepoProvider).getUserAuthUid();
   return ref.watch(authRepoProvider).getUserData(uid);

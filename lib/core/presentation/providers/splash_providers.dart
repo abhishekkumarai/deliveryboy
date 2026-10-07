@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
+import '../../../auth/presentation/providers/auth_state_provider.dart';
 import '../../../auth/presentation/providers/check_auth_provider.dart';
 import '../../core_features/locale/presentation/providers/app_locale_provider.dart';
 import '../../core_features/theme/presentation/providers/app_theme_provider.dart';
@@ -33,7 +34,8 @@ Future<void> splashServicesWarmup(SplashServicesWarmupRef ref) async {
 Future<String> splashTarget(SplashTargetRef ref) async {
   final hasConnection = await ref.watch(networkInfoProvider).hasInternetConnection;
   if (hasConnection) {
-    return const SignInRoute().location;
+    final isAuthenticated = ref.watch(authStateProvider).isSome();
+    return isAuthenticated ? const HomeRoute().location : const SignInRoute().location;
   } else {
     return const NoInternetRoute().location;
   }

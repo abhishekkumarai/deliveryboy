@@ -12,6 +12,8 @@ class HomeScreen extends StatelessWidget {
       compact: (_) => OrientationLayout(
         portrait: (_) => const HomeScreenCompact(),
       ),
+      medium: (_) => const HomeScreenCompact(),
+      expanded: (_) => const HomeScreenCompact(),
     );
   }
 }

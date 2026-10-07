@@ -38,7 +38,8 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 @riverpod
 GoRouter goRouter(GoRouterRef ref) {
-  final listenable = ValueNotifier<bool?>(null);
+  final currentAuth = ref.read(authStateProvider).isSome();
+  final listenable = ValueNotifier<bool?>(currentAuth);
 
   ref.listen(
     authStateProvider.select((user) => user.isSome()),
@@ -49,7 +50,7 @@ GoRouter goRouter(GoRouterRef ref) {
     debugLogDiagnostics: true,
     restorationScopeId: 'router',
     navigatorKey: _rootNavigatorKey,
-    initialLocation: kIsWeb ? const SignInRoute().location : const SplashRoute().location,
+    initialLocation: kIsWeb ? const HomeRoute().location : const SplashRoute().location,
     routes: $appRoutes,
     redirect: (BuildContext context, GoRouterState state) {
       final authState = ref.read(authStateProvider);

@@ -5,6 +5,7 @@ import '../../../core/presentation/styles/styles.dart';
 import '../../../core/presentation/utils/riverpod_framework.dart';
 import '../../../core/presentation/widgets/custom_elevated_button.dart';
 import '../../../core/presentation/widgets/platform_widgets/platform_icons.dart';
+import '../../../core/presentation/routing/app_router.dart';
 import '../../domain/sign_in_with_email.dart';
 import '../providers/sign_in_provider.dart';
 
@@ -86,6 +87,7 @@ class LoginFormComponent extends HookConsumerWidget {
           TextButton(
             onPressed: () {
               ref.read(signInStateProvider.notifier).signInWithDemoUser();
+              const HomeRoute().go(context);
             },
             child: const Text('Quick Demo Login (Driver)'),
           ),
