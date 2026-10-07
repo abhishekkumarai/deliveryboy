@@ -193,7 +193,7 @@ class _PodChecklistModalState extends State<PodChecklistModal> {
               _buildChecklistTile(
                 icon: Icons.attach_money_rounded,
                 title: 'Cash Collection (COD)',
-                subtitle: 'Collect: \$${widget.task.payment.amountDue.toStringAsFixed(2)}',
+                subtitle: 'Collect: ${widget.task.payment.currency == 'INR' ? '₹' : '\$'}${widget.task.payment.amountDue.toStringAsFixed(2)}',
                 isDone: _codCollected,
                 trailing: Switch(
                   value: _codCollected,

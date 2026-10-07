@@ -16,7 +16,7 @@ class AuthState extends _$AuthState {
           id: 'DP-402',
           email: 'driver@deliveryboy.com',
           name: 'Alex Smith',
-          phone: '+1555019283',
+          phone: '+919876543210',
           image: null,
         ),
       );

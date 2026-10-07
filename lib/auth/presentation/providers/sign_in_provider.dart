@@ -21,10 +21,10 @@ class SignInState extends _$SignInState {
       final email = params.email.trim().toLowerCase();
       if (email == 'driver@deliveryboy.com' || email == 'driver@deliverzler.com') {
         const demoUser = User(
-          id: 'demo_driver_001',
+          id: 'DP-402',
           email: 'driver@deliveryboy.com',
-          name: 'Ahmed Driver',
-          phone: '+201012345678',
+          name: 'Alex Smith',
+          phone: '+919876543210',
           image: null,
         );
         ref.read(authStateProvider.notifier).authenticateUser(demoUser);
@@ -46,10 +46,10 @@ class SignInState extends _$SignInState {
     state = const AsyncLoading();
     state = await AsyncValue.guard(() async {
       const demoUser = User(
-        id: 'demo_driver_001',
+        id: 'DP-402',
         email: 'driver@deliveryboy.com',
-        name: 'Ahmed Driver',
-        phone: '+201012345678',
+        name: 'Alex Smith',
+        phone: '+919876543210',
         image: null,
       );
       ref.read(authStateProvider.notifier).authenticateUser(demoUser);

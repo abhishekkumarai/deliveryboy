@@ -235,9 +235,9 @@ class DeliveryReceiptDialog extends StatelessWidget {
                             context,
                             'Payment Collected',
                             payload.verification.paymentCollected != null
-                                ? '\$${payload.verification.paymentCollected!.amount.toStringAsFixed(2)}'
+                                ? '${payload.verification.paymentCollected!.currency == 'INR' ? '₹' : '\$'}${payload.verification.paymentCollected!.amount.toStringAsFixed(2)}'
                                 : 'Prepaid',
-                            Icons.attach_money,
+                            Icons.currency_rupee,
                             isGreen: true,
                           ),
                         ),

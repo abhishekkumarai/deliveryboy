@@ -18,7 +18,8 @@ class UserImageComponent extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.easyListen(updateProfileImageStateProvider);
 
-    final userImage = ref.watch(currentUserProvider.select((user) => user.image));
+    final authState = ref.watch(authStateProvider);
+    final userImage = authState.fold(() => null, (u) => u.image);
 
     void pickImage(PickSource pickSource, BuildContext ctx) {
       ref.read(pickProfileImageProvider(pickSource).future).then(
@@ -32,10 +33,23 @@ class UserImageComponent extends ConsumerWidget {
     return Stack(
       alignment: Alignment.bottomRight,
       children: [
-        CachedNetworkImageCircular(
-          imageUrl: userImage,
-          radius: 64,
-        ),
+        userImage != null && userImage.contains('http')
+            ? CachedNetworkImageCircular(
+                imageUrl: userImage,
+                radius: 64,
+              )
+            : const CircleAvatar(
+                radius: 64,
+                backgroundColor: Color(0xFF0F172A),
+                child: Text(
+                  'A',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 48,
+                  ),
+                ),
+              ),
         Padding(
           padding: const EdgeInsets.only(right: Sizes.paddingH8),
           child: ImagePickComponent(

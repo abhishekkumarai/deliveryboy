@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import '../../../../auth/presentation/providers/auth_state_provider.dart';
 import '../../../../core/presentation/utils/fp_framework.dart';
 import '../../../../core/presentation/utils/riverpod_framework.dart';
@@ -17,7 +18,10 @@ class ProfileDetailsState extends _$ProfileDetailsState {
     state = const AsyncLoading();
 
     state = await AsyncValue.guard(() async {
-      await ref.read(profileRepoProvider).updateProfileData(params);
+      final user = ref.read(currentUserProvider);
+      if (!kIsWeb && user.id != 'DP-402' && !user.id.startsWith('demo')) {
+        await ref.read(profileRepoProvider).updateProfileData(params);
+      }
 
       ref.read(authStateProvider.notifier).updateUser(params);
 

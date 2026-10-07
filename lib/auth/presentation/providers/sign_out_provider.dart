@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 
 import '../../../core/infrastructure/notification/notification_service.dart';
 import '../../../core/presentation/extensions/future_extensions.dart';
@@ -17,10 +18,21 @@ class SignOutState extends _$SignOutState {
   Future<void> signOut() async {
     state = const AsyncLoading();
     state = await AsyncValue.guard(() async {
-      unawaited(ref.read(authRepoProvider).signOut().suppressError());
-      unawaited(
-        ref.read(notificationServiceProvider).unsubscribeFromTopic('general').suppressError(),
-      );
+      final user = ref.read(authStateProvider);
+      final isDemoOrWeb = kIsWeb ||
+          user.fold(
+            () => false,
+            (u) => u.id == 'DP-402' || u.id.startsWith('demo'),
+          );
+
+      if (!isDemoOrWeb) {
+        try {
+          await ref.read(authRepoProvider).signOut();
+        } catch (_) {}
+        try {
+          await ref.read(notificationServiceProvider).unsubscribeFromTopic('general');
+        } catch (_) {}
+      }
 
       ref.read(authStateProvider.notifier).unAuthenticateUser();
 

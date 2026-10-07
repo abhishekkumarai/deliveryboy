@@ -29,6 +29,9 @@ class SignInScreen extends ConsumerWidget {
       medium: (_) => OrientationLayout(
         portrait: (_) => const SignInScreenMedium(),
       ),
+      expanded: (_) => OrientationLayout(
+        portrait: (_) => const SignInScreenMedium(),
+      ),
     );
   }
 }

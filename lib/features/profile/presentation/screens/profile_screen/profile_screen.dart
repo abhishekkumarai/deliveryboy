@@ -10,12 +10,9 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WindowClassLayout(
-      compact: (_) => OrientationLayout(
-        portrait: (_) => const ProfileScreenCompact(),
-      ),
-      medium: (_) => OrientationLayout(
-        portrait: (_) => const ProfileScreenMedium(),
-      ),
+      compact: (_) => const ProfileScreenCompact(),
+      medium: (_) => const ProfileScreenMedium(),
+      expanded: (_) => const ProfileScreenMedium(),
     );
   }
 }

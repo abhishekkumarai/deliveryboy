@@ -1,14 +1,16 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
     }
-}
-
-def flutterRoot = localProperties.getProperty('flutter.sdk')
-if (flutterRoot == null) {
-    throw new FileNotFoundException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -21,7 +23,7 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-def dartEnvironmentVariables = []
+def dartEnvironmentVariables = [:]
 if (project.hasProperty('dart-defines')) {
     dartEnvironmentVariables = project.property('dart-defines')
         .split(',')
@@ -31,15 +33,13 @@ if (project.hasProperty('dart-defines')) {
         }
 }
 
-apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-
 android {
-    compileSdkVersion 33
+    namespace "com.appzler.deliverzler"
+    compileSdkVersion flutter.compileSdkVersion
+    ndkVersion flutter.ndkVersion
 
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -55,11 +55,11 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.appzler.deliverzler"
-        minSdkVersion 23
-        targetSdkVersion 33
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        manifestPlaceholders.ANDROID_GOOGLE_MAPS_API_KEY = dartEnvironmentVariables.ANDROID_GOOGLE_MAPS_API_KEY
+        manifestPlaceholders.ANDROID_GOOGLE_MAPS_API_KEY = dartEnvironmentVariables.ANDROID_GOOGLE_MAPS_API_KEY ?: ""
     }
 
     buildTypes {
@@ -76,7 +76,7 @@ flutter {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
     implementation 'com.google.firebase:firebase-analytics'
 }

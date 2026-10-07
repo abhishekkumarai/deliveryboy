@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../auth/domain/user.dart';
 import '../../../../auth/presentation/providers/auth_state_provider.dart';
 import '../../../../core/presentation/styles/styles.dart';
+import '../../../../core/presentation/utils/fp_framework.dart';
 import '../../../../core/presentation/utils/riverpod_framework.dart';
 
 class UserDetailsComponent extends ConsumerWidget {
@@ -11,7 +13,11 @@ class UserDetailsComponent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(currentUserProvider);
+    final authState = ref.watch(authStateProvider);
+    if (authState is! Some<User>) {
+      return const SizedBox.shrink();
+    }
+    final user = authState.value;
 
     return Column(
       children: [

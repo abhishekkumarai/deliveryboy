@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../../../auth/domain/user.dart';
 import '../../../../auth/presentation/providers/auth_state_provider.dart';
 import '../../../../core/presentation/helpers/localization_helper.dart';
 import '../../../../core/presentation/styles/styles.dart';
+import '../../../../core/presentation/utils/fp_framework.dart';
 import '../../../../core/presentation/utils/riverpod_framework.dart';
 import '../../../../core/presentation/widgets/custom_elevated_button.dart';
 import '../../domain/profile_details.dart';
@@ -16,7 +18,11 @@ class ProfileFormComponent extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.easyListen(profileDetailsStateProvider);
 
-    final user = ref.watch(currentUserProvider);
+    final authState = ref.watch(authStateProvider);
+    if (authState is! Some<User>) {
+      return const SizedBox.shrink();
+    }
+    final user = authState.value;
 
     final profileFormKey = useMemoized(GlobalKey<FormState>.new);
     final nameController = useTextEditingController(text: user.name ?? '');

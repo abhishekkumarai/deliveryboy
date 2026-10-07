@@ -9,9 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WindowClassLayout(
-      compact: (_) => OrientationLayout(
-        portrait: (_) => const HomeScreenCompact(),
-      ),
+      compact: (_) => const HomeScreenCompact(),
       medium: (_) => const HomeScreenCompact(),
       expanded: (_) => const HomeScreenCompact(),
     );

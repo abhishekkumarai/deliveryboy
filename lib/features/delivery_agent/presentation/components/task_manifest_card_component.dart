@@ -200,7 +200,7 @@ class TaskManifestCardComponent extends StatelessWidget {
                 _buildChip(
                   context,
                   Icons.payments_outlined,
-                  '${task.payment.mode}: \$${task.payment.amountDue.toStringAsFixed(2)}',
+                  '${task.payment.mode}: ${task.payment.currency == 'INR' ? '₹' : '\$'}${task.payment.amountDue.toStringAsFixed(2)}',
                   isAccent: true,
                 ),
               ],

@@ -96,7 +96,7 @@ class PaymentDetails with _$PaymentDetails {
   const factory PaymentDetails({
     @Default('prepaid') String mode,
     @Default(0.0) double amountDue,
-    @Default('USD') String currency,
+    @Default('INR') String currency,
     @Default(true) bool isPrepaid,
   }) = _PaymentDetails;
 

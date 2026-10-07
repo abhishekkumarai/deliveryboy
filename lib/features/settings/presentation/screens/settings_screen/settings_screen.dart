@@ -9,9 +9,9 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WindowClassLayout(
-      compact: (_) => OrientationLayout(
-        portrait: (_) => const SettingsScreenCompact(),
-      ),
+      compact: (_) => const SettingsScreenCompact(),
+      medium: (_) => const SettingsScreenCompact(),
+      expanded: (_) => const SettingsScreenCompact(),
     );
   }
 }
