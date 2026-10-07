@@ -136,7 +136,7 @@ _$PaymentDetailsImpl _$$PaymentDetailsImplFromJson(Map<String, dynamic> json) =>
     _$PaymentDetailsImpl(
       mode: json['mode'] as String? ?? 'prepaid',
       amountDue: (json['amountDue'] as num?)?.toDouble() ?? 0.0,
-      currency: json['currency'] as String? ?? 'USD',
+      currency: json['currency'] as String? ?? 'INR',
       isPrepaid: json['isPrepaid'] as bool? ?? true,
     );
 

@@ -1584,7 +1584,7 @@ class _$PaymentDetailsImpl implements _PaymentDetails {
   const _$PaymentDetailsImpl(
       {this.mode = 'prepaid',
       this.amountDue = 0.0,
-      this.currency = 'USD',
+      this.currency = 'INR',
       this.isPrepaid = true});
 
   factory _$PaymentDetailsImpl.fromJson(Map<String, dynamic> json) =>

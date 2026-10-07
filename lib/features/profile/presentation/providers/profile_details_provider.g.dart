@@ -7,7 +7,7 @@ part of 'profile_details_provider.dart';
 // **************************************************************************
 
 String _$profileDetailsStateHash() =>
-    r'f0c643bf151e29a42b3815fbb78d87d754ecb393';
+    r'dba3c2a48a06de74673e8ecf1f6d6627c198a2f5';
 
 /// See also [ProfileDetailsState].
 @ProviderFor(ProfileDetailsState)

@@ -220,7 +220,7 @@ extension $LanguageRouteExtension on LanguageRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$goRouterHash() => r'0cd390bcc2f467ace5de62dc103b2c3dc80fdd3d';
+String _$goRouterHash() => r'ffa18272f3a541c5c94ac5ecffaeedc2eee38b72';
 
 /// See also [goRouter].
 @ProviderFor(goRouter)

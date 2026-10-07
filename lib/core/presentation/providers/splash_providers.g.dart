@@ -22,7 +22,7 @@ final splashServicesWarmupProvider = AutoDisposeFutureProvider<void>.internal(
 );
 
 typedef SplashServicesWarmupRef = AutoDisposeFutureProviderRef<void>;
-String _$splashTargetHash() => r'0f4855488fa90a3ac0d1934fd6aed008d782eb29';
+String _$splashTargetHash() => r'3525f7b02503a4eeb1079ddbee91af0c3b7bd970';
 
 /// See also [splashTarget].
 @ProviderFor(splashTarget)

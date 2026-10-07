@@ -7,7 +7,7 @@ part of 'task_ingestion_service.dart';
 // **************************************************************************
 
 String _$activeDeliveryTaskControllerHash() =>
-    r'0df6eb291bb398384d67b813cd3cc0fb62dd7df5';
+    r'8cf2cd696099efdec0799cd3bac7ded7d13941fc';
 
 /// See also [ActiveDeliveryTaskController].
 @ProviderFor(ActiveDeliveryTaskController)
