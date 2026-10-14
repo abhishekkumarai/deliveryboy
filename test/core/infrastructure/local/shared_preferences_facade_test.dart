@@ -2,8 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:deliverzler/core/infrastructure/local/extensions/local_error_extension.dart';
-import 'package:deliverzler/core/infrastructure/local/shared_preferences_facade.dart';
+import 'package:deliveryboy/core/infrastructure/local/extensions/local_error_extension.dart';
+import 'package:deliveryboy/core/infrastructure/local/shared_preferences_facade.dart';
 
 class MockSharedPreferences extends Mock implements SharedPreferences {}
 

@@ -15,7 +15,7 @@ enum RouteAuthority {
   }
 }
 
-// TODO(Ahmed): use MyGoRouteData instead of GoRouterStateX.routeAuthority when $extra issues is fixed.
+// TODO: use MyGoRouteData instead of GoRouterStateX.routeAuthority when $extra issues is fixed.
 /* 
 typedef MyGoRouteExtra = ({List<RouteAuthority> routeAuthority, Object? value});
 

@@ -1,4 +1,4 @@
-# Deliverzler
+# DeliveryBoy
 
 An open-source Delivery App for Restaurants built on Flutter using Domain-Driven Design (DDD) and
 Layered Architecture along with Riverpod Framework, Firebase as backend, Navigation 2.0 (GoRouter),

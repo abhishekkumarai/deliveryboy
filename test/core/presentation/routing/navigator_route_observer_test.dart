@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:deliverzler/core/presentation/routing/navigator_route_observer.dart';
+import 'package:deliveryboy/core/presentation/routing/navigator_route_observer.dart';
 
 class MockRoute<T> extends Mock implements Route<T> {}
 

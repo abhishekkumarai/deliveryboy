@@ -1,4 +1,4 @@
-name: deliverzler
+name: deliveryboy
 description: Delivery App for Restaurants built on Flutter using Domain-Driven Design (DDD) and Riverpod Framework.
 version: 1.0.0+1
 publish_to: none
@@ -85,6 +85,7 @@ dependencies:
   url_launcher_android: 6.3.14
   flutter_map: ^8.1.1
   latlong2: ^0.9.1
+  app_links: ^7.2.2
 
 dev_dependencies:
   flutter_test:

@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:deliverzler/core/infrastructure/network/google_map_api/interceptors/error_interceptor.dart';
+import 'package:deliveryboy/core/infrastructure/network/google_map_api/interceptors/error_interceptor.dart';
 
 class MockResponseInterceptorHandler extends Mock implements ResponseInterceptorHandler {}
 

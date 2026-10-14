@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../core/presentation/styles/styles.dart';
 import '../../domain/completion_payload.dart';
+import '../../infrastructure/live_task_service.dart';
 
-class DeliveryReceiptDialog extends StatelessWidget {
+class DeliveryReceiptDialog extends StatefulWidget {
   const DeliveryReceiptDialog({
     required this.payload,
     required this.webhookUrl,
     required this.returnUrl,
     required this.onReturnToApp,
+    this.callerName = 'StoreApp',
+    this.dispatch,
     super.key,
   });
 
@@ -17,6 +20,28 @@ class DeliveryReceiptDialog extends StatelessWidget {
   final String webhookUrl;
   final String? returnUrl;
   final VoidCallback onReturnToApp;
+  final String callerName;
+
+  /// Live mode: performs the real webhook POST. Null means demo (simulated).
+  final Future<WebhookResult> Function()? dispatch;
+
+  @override
+  State<DeliveryReceiptDialog> createState() => _DeliveryReceiptDialogState();
+}
+
+class _DeliveryReceiptDialogState extends State<DeliveryReceiptDialog> {
+  Future<WebhookResult>? _result;
+
+  CompletionPayload get payload => widget.payload;
+  String get webhookUrl => widget.webhookUrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _result = widget.dispatch?.call();
+  }
+
+  void _retry() => setState(() => _result = widget.dispatch!.call());
 
   @override
   Widget build(BuildContext context) {
@@ -90,13 +115,15 @@ class DeliveryReceiptDialog extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Row(
+                              Row(
                                 children: [
-                                  Icon(Icons.webhook, size: 16, color: Color(0xFF10B981)),
-                                  SizedBox(width: 6),
+                                  const Icon(Icons.webhook, size: 16, color: Color(0xFF10B981)),
+                                  const SizedBox(width: 6),
                                   Text(
-                                    'WEBHOOK DISPATCHED',
-                                    style: TextStyle(
+                                    widget.dispatch == null
+                                        ? 'WEBHOOK DISPATCHED (DEMO)'
+                                        : 'WEBHOOK',
+                                    style: const TextStyle(
                                       color: Color(0xFF10B981),
                                       fontSize: 11,
                                       fontWeight: FontWeight.bold,
@@ -105,21 +132,7 @@ class DeliveryReceiptDialog extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF10B981).withValues(alpha: 0.2),
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                                child: const Text(
-                                  'HTTP 200 OK • 142ms',
-                                  style: TextStyle(
-                                    color: Color(0xFF10B981),
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
+                              _buildStatusBadge(),
                             ],
                           ),
                           const SizedBox(height: 6),
@@ -261,12 +274,12 @@ class DeliveryReceiptDialog extends StatelessWidget {
                   ),
                   onPressed: () {
                     Navigator.of(context).pop();
-                    onReturnToApp();
+                    widget.onReturnToApp();
                   },
                   icon: const Icon(Icons.open_in_new, color: Colors.white, size: 18),
-                  label: const Text(
-                    'Return to Caller App (StoreApp)',
-                    style: TextStyle(
+                  label: Text(
+                    'Return to Caller App (${widget.callerName})',
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -284,6 +297,37 @@ class DeliveryReceiptDialog extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildStatusBadge() {
+    const green = Color(0xFF10B981);
+    const red = Color(0xFFEF4444);
+    Widget chip(String text, Color color) => Container(
+          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+          decoration: BoxDecoration(
+            color: color.withValues(alpha: 0.2),
+            borderRadius: BorderRadius.circular(4),
+          ),
+          child: Text(
+            text,
+            style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.bold),
+          ),
+        );
+
+    final result = _result;
+    if (result == null) return chip('HTTP 200 OK • 142ms', green);
+    return FutureBuilder<WebhookResult>(
+      future: result,
+      builder: (context, snap) {
+        if (!snap.hasData) return chip('SENDING…', const Color(0xFF94A3B8));
+        final r = snap.data!;
+        if (r.ok) return chip('HTTP ${r.statusCode} OK • ${r.elapsedMs}ms', green);
+        return InkWell(
+          onTap: _retry,
+          child: chip('FAILED: ${r.error} • TAP TO RETRY', red),
+        );
+      },
     );
   }
 

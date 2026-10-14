@@ -179,7 +179,7 @@ class AppTheme {
 
   late final CustomColors _customColors = _appColors.customColors;
 
-  // TODO(AHMED): useMaterial3
+  // TODO: useMaterial3
   ThemeData getThemeData(String fontFamily) {
     return _baseTheme.copyWith(
       // ignore: deprecated_member_use

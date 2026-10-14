@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:deliverzler/auth/domain/sign_in_with_email.dart';
-import 'package:deliverzler/core/domain/value_validators.dart';
+import 'package:deliveryboy/auth/domain/sign_in_with_email.dart';
+import 'package:deliveryboy/core/domain/value_validators.dart';
 import '../../utils.dart';
 
 void main() {

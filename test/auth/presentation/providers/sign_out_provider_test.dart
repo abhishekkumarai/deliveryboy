@@ -1,15 +1,15 @@
 // ignore_for_file: invalid_use_of_visible_for_overriding_member
 
-import 'package:deliverzler/core/infrastructure/notification/notification_service.dart';
+import 'package:deliveryboy/core/infrastructure/notification/notification_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:deliverzler/auth/domain/user.dart';
-import 'package:deliverzler/auth/infrastructure/repos/auth_repo.dart';
-import 'package:deliverzler/auth/presentation/providers/auth_state_provider.dart';
-import 'package:deliverzler/auth/presentation/providers/sign_out_provider.dart';
-import 'package:deliverzler/core/presentation/utils/fp_framework.dart';
-import 'package:deliverzler/core/presentation/utils/riverpod_framework.dart';
+import 'package:deliveryboy/auth/domain/user.dart';
+import 'package:deliveryboy/auth/infrastructure/repos/auth_repo.dart';
+import 'package:deliveryboy/auth/presentation/providers/auth_state_provider.dart';
+import 'package:deliveryboy/auth/presentation/providers/sign_out_provider.dart';
+import 'package:deliveryboy/core/presentation/utils/fp_framework.dart';
+import 'package:deliveryboy/core/presentation/utils/riverpod_framework.dart';
 import '../../../utils.dart';
 
 class MockAuthRepo extends Mock implements AuthRepo {}

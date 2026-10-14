@@ -29,7 +29,7 @@ class ImagePickComponent extends StatelessWidget {
         showDialog<void>(
           context: context,
           builder: (BuildContext ctx) {
-            // TODO(Ahmed): Use platform alert dialog.
+            // TODO: Use platform alert dialog.
             return AlertDialog(
               title: Text(
                 tr(context).chooseOption,

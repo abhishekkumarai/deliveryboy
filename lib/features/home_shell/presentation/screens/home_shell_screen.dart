@@ -90,7 +90,7 @@ class HomeShellScreen extends HookConsumerWidget {
           currentTab: TabItem.values[navigationShell.currentIndex],
           onSelectTab: onSelectTab,
         ),
-        // TODO(Ahmed): Migrate to AdaptiveLayout HomeShell when the bottomNavigation displacement
+        // TODO: Migrate to AdaptiveLayout HomeShell when the bottomNavigation displacement
         // bug is fixed: https://github.com/flutter/flutter/issues/131734
         /* body: AdaptiveLayout(
           body: SlotLayout(

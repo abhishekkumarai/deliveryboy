@@ -1,14 +1,14 @@
-import 'package:deliverzler/auth/presentation/providers/sign_out_provider.dart';
+import 'package:deliveryboy/auth/presentation/providers/sign_out_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:deliverzler/auth/domain/user.dart';
-import 'package:deliverzler/auth/infrastructure/repos/auth_repo.dart';
-import 'package:deliverzler/auth/presentation/providers/auth_state_provider.dart';
-import 'package:deliverzler/auth/presentation/providers/check_auth_provider.dart';
-import 'package:deliverzler/core/infrastructure/network/network_info.dart';
-import 'package:deliverzler/core/presentation/utils/fp_framework.dart';
-import 'package:deliverzler/core/presentation/utils/riverpod_framework.dart';
+import 'package:deliveryboy/auth/domain/user.dart';
+import 'package:deliveryboy/auth/infrastructure/repos/auth_repo.dart';
+import 'package:deliveryboy/auth/presentation/providers/auth_state_provider.dart';
+import 'package:deliveryboy/auth/presentation/providers/check_auth_provider.dart';
+import 'package:deliveryboy/core/infrastructure/network/network_info.dart';
+import 'package:deliveryboy/core/presentation/utils/fp_framework.dart';
+import 'package:deliveryboy/core/presentation/utils/riverpod_framework.dart';
 import '../../../utils.dart';
 
 class MockNetworkInfo extends Mock implements NetworkInfo {}

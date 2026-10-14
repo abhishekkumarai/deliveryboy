@@ -23,6 +23,10 @@ class ActiveDeliveryTaskController extends _$ActiveDeliveryTaskController {
     }
   }
 
+  void resetToDemo() {
+    state = _buildSampleDemoTask();
+  }
+
   bool ingestFromPayload(String rawPayload) {
     try {
       final decoded = jsonDecode(rawPayload);

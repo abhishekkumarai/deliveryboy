@@ -26,7 +26,7 @@ extension FirebaseErrorExtension on Object {
 }
 
 extension _FirebaseAuthErrorExtension on FirebaseAuthException {
-  // TODO(Ahmed): Handle all auth exception cases and add unit tests
+  // TODO: Handle all auth exception cases and add unit tests
   ServerException firebaseAuthToServerException() {
     return switch (code) {
       'invalid-email' => ServerException(

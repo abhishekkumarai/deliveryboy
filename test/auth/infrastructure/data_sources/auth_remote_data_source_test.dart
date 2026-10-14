@@ -5,13 +5,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:deliverzler/auth/domain/sign_in_with_email.dart';
-import 'package:deliverzler/auth/infrastructure/data_sources/auth_remote_data_source.dart';
-import 'package:deliverzler/auth/infrastructure/dtos/user_dto.dart';
-import 'package:deliverzler/core/infrastructure/error/app_exception.dart';
-import 'package:deliverzler/core/infrastructure/network/main_api/api_callers/firebase_auth_facade.dart';
-import 'package:deliverzler/core/infrastructure/network/main_api/api_callers/firebase_firestore_facade.dart';
-import 'package:deliverzler/core/presentation/utils/riverpod_framework.dart';
+import 'package:deliveryboy/auth/domain/sign_in_with_email.dart';
+import 'package:deliveryboy/auth/infrastructure/data_sources/auth_remote_data_source.dart';
+import 'package:deliveryboy/auth/infrastructure/dtos/user_dto.dart';
+import 'package:deliveryboy/core/infrastructure/error/app_exception.dart';
+import 'package:deliveryboy/core/infrastructure/network/main_api/api_callers/firebase_auth_facade.dart';
+import 'package:deliveryboy/core/infrastructure/network/main_api/api_callers/firebase_firestore_facade.dart';
+import 'package:deliveryboy/core/presentation/utils/riverpod_framework.dart';
 import '../../../fixtures/fixture_reader.dart';
 import '../../../utils.dart';
 

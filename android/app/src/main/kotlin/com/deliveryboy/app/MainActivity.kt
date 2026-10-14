@@ -1,4 +1,4 @@
-package com.appzler.deliverzler
+package com.deliveryboy.app
 
 import android.os.Build
 import android.os.Bundle

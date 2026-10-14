@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:deliverzler/core/presentation/routing/app_router.dart';
-import 'package:deliverzler/core/presentation/styles/styles.dart';
-import 'package:deliverzler/features/delivery_agent/domain/completion_payload.dart';
-import 'package:deliverzler/features/delivery_agent/domain/delivery_task.dart';
-import 'package:deliverzler/features/delivery_agent/infrastructure/task_ingestion_service.dart';
-import 'package:deliverzler/features/delivery_agent/presentation/components/delivery_receipt_dialog.dart';
-import 'package:deliverzler/features/delivery_agent/presentation/components/pod_checklist_modal.dart';
-import 'package:deliverzler/features/delivery_agent/presentation/components/task_header_component.dart';
-import 'package:deliverzler/features/delivery_agent/presentation/components/task_manifest_card_component.dart';
+import 'package:deliveryboy/core/presentation/routing/app_router.dart';
+import 'package:deliveryboy/core/presentation/styles/styles.dart';
+import 'package:deliveryboy/features/delivery_agent/domain/completion_payload.dart';
+import 'package:deliveryboy/features/delivery_agent/domain/delivery_task.dart';
+import 'package:deliveryboy/features/delivery_agent/infrastructure/live_task_service.dart';
+import 'package:deliveryboy/features/delivery_agent/infrastructure/task_ingestion_service.dart';
+import 'package:deliveryboy/features/delivery_agent/presentation/components/delivery_receipt_dialog.dart';
+import 'package:deliveryboy/features/delivery_agent/presentation/components/live_task_bar.dart';
+import 'package:deliveryboy/features/delivery_agent/presentation/components/pod_checklist_modal.dart';
+import 'package:deliveryboy/features/delivery_agent/presentation/components/task_header_component.dart';
+import 'package:deliveryboy/features/delivery_agent/presentation/components/task_manifest_card_component.dart';
 
 class ActiveDeliveryTaskScreen extends ConsumerWidget {
   const ActiveDeliveryTaskScreen({super.key});
@@ -16,6 +18,7 @@ class ActiveDeliveryTaskScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final task = ref.watch(activeDeliveryTaskControllerProvider);
+    final isLive = ref.watch(taskSourceProvider) == TaskSource.live;
 
     if (task == null) {
       return Scaffold(
@@ -93,7 +96,24 @@ class ActiveDeliveryTaskScreen extends ConsumerWidget {
                 payload: payload,
                 webhookUrl: task.clientApp.webhookUrl,
                 returnUrl: task.clientApp.returnUrl,
-                onReturnToApp: () {
+                callerName: task.clientApp.appName,
+                dispatch: isLive
+                    ? () => postCompletionWebhook(task.clientApp.webhookUrl, payload)
+                    : null,
+                onReturnToApp: () async {
+                  if (isLive) {
+                    final opened = await openReturnUrl(task.clientApp.returnUrl);
+                    if (!opened && context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Could not open ${task.clientApp.returnUrl ?? 'a return link'}',
+                          ),
+                        ),
+                      );
+                    }
+                    return;
+                  }
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(
@@ -113,6 +133,7 @@ class ActiveDeliveryTaskScreen extends ConsumerWidget {
       body: SafeArea(
         child: Column(
           children: [
+            const LiveTaskBar(),
             TaskHeaderComponent(task: task),
             Expanded(
               child: SingleChildScrollView(

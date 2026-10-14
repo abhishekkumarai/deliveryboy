@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:deliverzler/core/infrastructure/network/google_map_api/interceptors/content_type_interceptor.dart';
-import 'package:deliverzler/core/infrastructure/network/main_api/main_api_config.dart';
+import 'package:deliveryboy/core/infrastructure/network/google_map_api/interceptors/content_type_interceptor.dart';
+import 'package:deliveryboy/core/infrastructure/network/main_api/main_api_config.dart';
 
 class MockRequestInterceptorHandler extends Mock implements RequestInterceptorHandler {}
 

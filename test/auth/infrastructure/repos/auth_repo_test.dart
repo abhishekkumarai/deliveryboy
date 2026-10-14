@@ -1,13 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:deliverzler/auth/domain/sign_in_with_email.dart';
-import 'package:deliverzler/auth/infrastructure/data_sources/auth_local_data_source.dart';
-import 'package:deliverzler/auth/infrastructure/data_sources/auth_remote_data_source.dart';
-import 'package:deliverzler/auth/infrastructure/dtos/user_dto.dart';
-import 'package:deliverzler/auth/infrastructure/repos/auth_repo.dart';
-import 'package:deliverzler/core/infrastructure/network/network_info.dart';
-import 'package:deliverzler/core/presentation/utils/riverpod_framework.dart';
+import 'package:deliveryboy/auth/domain/sign_in_with_email.dart';
+import 'package:deliveryboy/auth/infrastructure/data_sources/auth_local_data_source.dart';
+import 'package:deliveryboy/auth/infrastructure/data_sources/auth_remote_data_source.dart';
+import 'package:deliveryboy/auth/infrastructure/dtos/user_dto.dart';
+import 'package:deliveryboy/auth/infrastructure/repos/auth_repo.dart';
+import 'package:deliveryboy/core/infrastructure/network/network_info.dart';
+import 'package:deliveryboy/core/presentation/utils/riverpod_framework.dart';
 import '../../../utils.dart';
 
 class MockAuthRemoteDataSource extends Mock implements AuthRemoteDataSource {}

@@ -19,7 +19,7 @@ class SignInState extends _$SignInState {
     state = const AsyncLoading();
     state = await AsyncValue.guard(() async {
       final email = params.email.trim().toLowerCase();
-      if (email == 'driver@deliveryboy.com' || email == 'driver@deliverzler.com') {
+      if (email == 'driver@deliveryboy.com') {
         const demoUser = User(
           id: 'DP-402',
           email: 'driver@deliveryboy.com',

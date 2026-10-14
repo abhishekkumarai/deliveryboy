@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:deliverzler/core/infrastructure/error/app_exception.dart';
-import 'package:deliverzler/core/infrastructure/network/google_map_api/extensions/google_map_error_extension.dart';
+import 'package:deliveryboy/core/infrastructure/error/app_exception.dart';
+import 'package:deliveryboy/core/infrastructure/network/google_map_api/extensions/google_map_error_extension.dart';
 
 void main() {
   group('googleMapErrorToServerException', () {

@@ -35,7 +35,7 @@ class OpenStreetMapService {
         'limit': 5,
       },
       options: Options(
-        headers: {'User-Agent': 'DeliveryBoy/1.0 (https://deliverzler.web.app)'},
+        headers: {'User-Agent': 'DeliveryBoy/1.0 (com.deliveryboy.app)'},
       ),
       cancelToken: cancelToken,
     );

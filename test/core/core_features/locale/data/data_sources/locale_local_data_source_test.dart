@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:deliverzler/core/core_features/locale/infrastructure/data_sources/locale_local_data_source.dart';
-import 'package:deliverzler/core/infrastructure/error/app_exception.dart';
-import 'package:deliverzler/core/infrastructure/local/shared_preferences_facade.dart';
-import 'package:deliverzler/core/presentation/utils/riverpod_framework.dart';
+import 'package:deliveryboy/core/core_features/locale/infrastructure/data_sources/locale_local_data_source.dart';
+import 'package:deliveryboy/core/infrastructure/error/app_exception.dart';
+import 'package:deliveryboy/core/infrastructure/local/shared_preferences_facade.dart';
+import 'package:deliveryboy/core/presentation/utils/riverpod_framework.dart';
 import '../../../../../utils.dart';
 
 class MockSharedPreferencesFacade extends Mock implements SharedPreferencesFacade {}

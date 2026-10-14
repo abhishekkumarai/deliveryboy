@@ -1,0 +1,23 @@
+{
+  "taskId": "LIVE-1001",
+  "externalOrderId": "ORD-5001",
+  "clientApp": {
+    "appId": "com.example.storeapp",
+    "appName": "StoreApp",
+    "webhookUrl": "https://webhook.site/replace-with-your-id",
+    "returnUrl": "storeapp://delivery-callback?task_id=LIVE-1001"
+  },
+  "deliveryPerson": { "id": "DP-402", "name": "Alex Smith", "phone": "+919876543210" },
+  "pickup": {
+    "name": "Koramangala Hub", "phone": "+918023456789",
+    "address": "80 Feet Rd, Koramangala, Bengaluru", "latitude": 12.9352, "longitude": 77.6245
+  },
+  "destination": {
+    "name": "Arjun Sharma", "phone": "+919812345678",
+    "address": "Green Glen Layout, Bellandur, Bengaluru", "latitude": 12.9260, "longitude": 77.6762
+  },
+  "packageDetails": { "packageId": "PKG-1", "trackingBarcode": "TRK100" },
+  "payment": { "mode": "Cash on Delivery", "amountDue": 450, "currency": "INR", "isPrepaid": false },
+  "verificationRequirements": { "requireOtp": true, "expectedOtp": "4890", "requireBarcodeScan": true },
+  "createdAt": "2026-10-15T10:00:00Z"
+}

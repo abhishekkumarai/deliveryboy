@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:deliverzler/features/delivery_agent/domain/delivery_task.dart';
-import 'package:deliverzler/features/delivery_agent/domain/completion_payload.dart';
+import 'package:deliveryboy/features/delivery_agent/domain/delivery_task.dart';
+import 'package:deliveryboy/features/delivery_agent/domain/completion_payload.dart';
 
 void main() {
   group('Delivery Simulation & Integration Lifecycle Tests', () {

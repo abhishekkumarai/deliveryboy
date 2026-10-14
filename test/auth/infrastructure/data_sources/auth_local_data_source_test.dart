@@ -2,18 +2,18 @@
 
 import 'dart:convert';
 
-import 'package:deliverzler/core/core_features/locale/presentation/providers/app_locale_provider.dart';
-import 'package:deliverzler/core/core_features/locale/presentation/utils/app_locale.dart';
-import 'package:deliverzler/core/core_features/theme/presentation/providers/app_theme_provider.dart';
-import 'package:deliverzler/core/core_features/theme/presentation/utils/app_theme.dart';
+import 'package:deliveryboy/core/core_features/locale/presentation/providers/app_locale_provider.dart';
+import 'package:deliveryboy/core/core_features/locale/presentation/utils/app_locale.dart';
+import 'package:deliveryboy/core/core_features/theme/presentation/providers/app_theme_provider.dart';
+import 'package:deliveryboy/core/core_features/theme/presentation/utils/app_theme.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:deliverzler/auth/infrastructure/data_sources/auth_local_data_source.dart';
-import 'package:deliverzler/auth/infrastructure/dtos/user_dto.dart';
-import 'package:deliverzler/core/infrastructure/error/app_exception.dart';
-import 'package:deliverzler/core/infrastructure/local/shared_preferences_facade.dart';
-import 'package:deliverzler/core/presentation/utils/riverpod_framework.dart';
+import 'package:deliveryboy/auth/infrastructure/data_sources/auth_local_data_source.dart';
+import 'package:deliveryboy/auth/infrastructure/dtos/user_dto.dart';
+import 'package:deliveryboy/core/infrastructure/error/app_exception.dart';
+import 'package:deliveryboy/core/infrastructure/local/shared_preferences_facade.dart';
+import 'package:deliveryboy/core/presentation/utils/riverpod_framework.dart';
 import '../../../fixtures/fixture_reader.dart';
 import '../../../utils.dart';
 

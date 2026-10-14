@@ -156,7 +156,7 @@ class _OsmMapComponentState extends ConsumerState<OsmMapComponent> {
       children: [
         TileLayer(
           urlTemplate: isDark ? _osmDarkTileUrl : _osmLightTileUrl,
-          userAgentPackageName: 'com.appzler.deliveryboy',
+          userAgentPackageName: 'com.deliveryboy.app',
         ),
         if (driverPosition != null)
           CircleLayer(

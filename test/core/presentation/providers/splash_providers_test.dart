@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:deliverzler/auth/infrastructure/repos/auth_repo.dart';
-import 'package:deliverzler/core/infrastructure/network/network_info.dart';
-import 'package:deliverzler/core/presentation/providers/splash_providers.dart';
-import 'package:deliverzler/core/presentation/routing/app_router.dart';
-import 'package:deliverzler/core/presentation/utils/riverpod_framework.dart';
+import 'package:deliveryboy/auth/infrastructure/repos/auth_repo.dart';
+import 'package:deliveryboy/core/infrastructure/network/network_info.dart';
+import 'package:deliveryboy/core/presentation/providers/splash_providers.dart';
+import 'package:deliveryboy/core/presentation/routing/app_router.dart';
+import 'package:deliveryboy/core/presentation/utils/riverpod_framework.dart';
 import '../../../utils.dart';
 
 class MockNetworkInfo extends Mock implements NetworkInfo {}

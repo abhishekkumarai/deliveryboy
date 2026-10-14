@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:deliverzler/l10n/app_localizations.dart';
+import 'package:deliveryboy/l10n/app_localizations.dart';
 
-import 'package:deliverzler/core/presentation/utils/riverpod_framework.dart';
+import 'package:deliveryboy/core/presentation/utils/riverpod_framework.dart';
 
 Future<BuildContext> setUpLocalizationsContext(WidgetTester t) async {
   late BuildContext result;

@@ -8,6 +8,7 @@ import 'core/presentation/routing/app_router.dart';
 import 'core/presentation/routing/navigation_service.dart';
 import 'core/presentation/utils/riverpod_framework.dart';
 import 'core/presentation/utils/scroll_behaviors.dart';
+import 'features/delivery_agent/infrastructure/live_task_service.dart';
 
 class MyApp extends HookConsumerWidget {
   const MyApp({super.key});
@@ -15,6 +16,7 @@ class MyApp extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(goRouterProvider);
+    ref.watch(liveTaskDeepLinkProvider);
 
     useOnPlatformBrightnessChange((previous, current) {
       ref.read(platformBrightnessProvider.notifier).update((_) => current);

@@ -7,7 +7,7 @@ part 'user_dto.freezed.dart';
 
 part 'user_dto.g.dart';
 
-// TODO(Ahmed): extend User entity when extending another Freezed class is supported:
+// TODO: extend User entity when extending another Freezed class is supported:
 // https://github.com/rrousselGit/freezed/issues/907
 @freezed
 class UserDto with _$UserDto {

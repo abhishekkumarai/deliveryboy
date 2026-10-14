@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:deliverzler/core/core_features/theme/infrastructure/data_sources/theme_local_data_source.dart';
-import 'package:deliverzler/core/core_features/theme/infrastructure/repos/theme_repo.dart';
-import 'package:deliverzler/core/presentation/utils/riverpod_framework.dart';
+import 'package:deliveryboy/core/core_features/theme/infrastructure/data_sources/theme_local_data_source.dart';
+import 'package:deliveryboy/core/core_features/theme/infrastructure/repos/theme_repo.dart';
+import 'package:deliveryboy/core/presentation/utils/riverpod_framework.dart';
 import '../../../../../utils.dart';
 
 class MockThemeLocalDataSource extends Mock implements ThemeLocalDataSource {}

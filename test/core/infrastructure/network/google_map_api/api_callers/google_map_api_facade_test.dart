@@ -4,8 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:deliverzler/core/infrastructure/network/google_map_api/api_callers/google_map_api_facade.dart';
-import 'package:deliverzler/core/infrastructure/network/google_map_api/extensions/google_map_error_extension.dart';
+import 'package:deliveryboy/core/infrastructure/network/google_map_api/api_callers/google_map_api_facade.dart';
+import 'package:deliveryboy/core/infrastructure/network/google_map_api/extensions/google_map_error_extension.dart';
 
 class MockDio extends Mock implements Dio {}
 

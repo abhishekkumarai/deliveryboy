@@ -7,7 +7,7 @@ import 'package:riverpod/src/notifier.dart' as notifier;
 
 import '../utils/riverpod_framework.dart';
 
-export 'package:deliverzler/core/presentation/utils/event.dart';
+export 'package:deliveryboy/core/presentation/utils/event.dart';
 
 part '../extensions/auto_dispose_ref_extension.dart';
 

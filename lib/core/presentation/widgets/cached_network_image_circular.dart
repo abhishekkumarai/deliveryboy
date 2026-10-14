@@ -16,14 +16,11 @@ class CachedNetworkImageCircular extends ConsumerWidget {
   const CachedNetworkImageCircular({
     required this.imageUrl,
     required this.radius,
-    this.spareImageUrl =
-        'https://firebasestorage.googleapis.com/v0/b/deliverzler.appspot.com/o/public%2Fplaceholder.png?alt=media',
     this.maxHeightDiskCache = 400,
     this.maxWidthDiskCache = 400,
     super.key,
   });
   final String? imageUrl;
-  final String spareImageUrl;
   final double radius;
   final int? maxHeightDiskCache;
   final int? maxWidthDiskCache;
@@ -32,12 +29,20 @@ class CachedNetworkImageCircular extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final cacheService = ref.watch(cacheServiceProvider);
 
+    final url = imageUrl;
+    if (url == null || !url.contains('http')) {
+      return CircleAvatar(
+        radius: radius,
+        child: Icon(Icons.person, size: radius),
+      );
+    }
+
     return CachedNetworkImage(
       cacheManager: cacheService.customCacheManager,
       errorListener: (error) {
         _reportImageError(ref, error);
       },
-      imageUrl: imageUrl != null && imageUrl!.contains('http') ? imageUrl! : spareImageUrl,
+      imageUrl: url,
       imageBuilder: (context, imageProvider) => CircleAvatar(
         radius: radius,
         backgroundImage: imageProvider,

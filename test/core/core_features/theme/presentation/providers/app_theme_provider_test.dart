@@ -2,10 +2,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:deliverzler/core/core_features/theme/infrastructure/repos/theme_repo.dart';
-import 'package:deliverzler/core/core_features/theme/presentation/providers/app_theme_provider.dart';
-import 'package:deliverzler/core/core_features/theme/presentation/utils/app_theme.dart';
-import 'package:deliverzler/core/presentation/utils/riverpod_framework.dart';
+import 'package:deliveryboy/core/core_features/theme/infrastructure/repos/theme_repo.dart';
+import 'package:deliveryboy/core/core_features/theme/presentation/providers/app_theme_provider.dart';
+import 'package:deliveryboy/core/core_features/theme/presentation/utils/app_theme.dart';
+import 'package:deliveryboy/core/presentation/utils/riverpod_framework.dart';
 import '../../../../../utils.dart';
 
 class MockThemeRepo extends Mock implements ThemeRepo {}

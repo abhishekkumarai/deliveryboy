@@ -1,7 +1,7 @@
 part of 'app_router.dart';
 
 extension GoRouterStateX on GoRouterState {
-  // TODO(AHMED): Use routeLocation when https://github.com/flutter/flutter/issues/125752 is fixed?
+  // TODO: Use routeLocation when https://github.com/flutter/flutter/issues/125752 is fixed?
   String get routeLocation => uri.toString();
 
   List<RouteAuthority> get routeAuthority {

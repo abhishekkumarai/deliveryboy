@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:deliverzler/core/infrastructure/error/app_exception.dart';
-import 'package:deliverzler/core/infrastructure/local/extensions/local_error_extension.dart';
+import 'package:deliveryboy/core/infrastructure/error/app_exception.dart';
+import 'package:deliveryboy/core/infrastructure/local/extensions/local_error_extension.dart';
 
 void main() {
   group('localErrorToCacheException', () {

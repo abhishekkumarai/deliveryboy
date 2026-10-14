@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../helpers/platform_helper.dart';
 
-// TODO(AHMED): Migrate to BreakPoint from flutter_adaptive_scaffold??
+// TODO: Migrate to BreakPoint from flutter_adaptive_scaffold??
 // Abiding to Material 3 Design guidelines:
 // https://m3.material.io/foundations/adaptive-design/large-screens/overview
 enum WindowSizeClass {

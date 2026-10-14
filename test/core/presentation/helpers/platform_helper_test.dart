@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:deliverzler/core/presentation/helpers/platform_helper.dart';
+import 'package:deliveryboy/core/presentation/helpers/platform_helper.dart';
 
 void main() {
   void setUpTargetPlatform(TargetPlatform targetPlatform) {
